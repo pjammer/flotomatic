@@ -1,4 +1,4 @@
-require 'spec/rake/spectask'
+require '../../spec/rake/spectask'
 namespace :flotomatic do 
   
   desc 'Default: run unit tests.'

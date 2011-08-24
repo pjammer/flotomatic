@@ -49,7 +49,7 @@ Initialize (and then set data & options later):
     # TODO: custom functions for ticks and such
 
     @collection_filter = nil
-    returning(self) do |flot|
+    tap do |flot|
       flot.data       ||= []
       flot.options    ||= {}
       flot.html_options = html_opts.reverse_merge(CANVAS_DEFAULT_HTML_OPTIONS)

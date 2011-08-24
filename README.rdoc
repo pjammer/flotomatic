@@ -2,6 +2,8 @@
 
 Flotomatic is a Rails wrapper around the flot javascript graphing library.
 
+Flotomatic now works with Rails 3's conventions too.
+
 Flotomatic was originally developed for graphing migraine histories on http://MigraineLiving.com.
 
 Known issues:
@@ -10,14 +12,16 @@ Known issues:
 
 == Installation
 
-To install the flotomatic plugin:
+To install the flotomatic plugin in rails 3:
 
-  script/plugin install git://github.com/xdotcommer/flotomatic.git
+  rails generate flotomatic
+
 
 The following rake tasks are also available:
-* rake  		# spec by default, runs specs
-* rake rdoc  	# create documentation in rdoc folder
-* rake install	# (re)copies the public javascript and stylesheet files - this is done automatically on install
+* rake
+spec by default, runs specs
+* rake rdoc
+create documentation in rdoc folder
 
 == Example
 
