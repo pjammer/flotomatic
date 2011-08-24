@@ -45,9 +45,9 @@ I've recently included a working example in the project under the example direct
     f.series_for("Migraines", @migraines, :x => :entry_date, :y => lambda {|record| record.migraine? ? 4 : nil }, :options => {:points => {:show => true}, :bars => {:show => false}})
   end
 
-=== View
+=== View (in Rails 3.0.x )
 
-  <%= flot_includes %>
+  <%= flot_includes.html_safe %>
 
   <h2>Graph the following items</h2>
 
@@ -65,7 +65,7 @@ I've recently included a working example in the project under the example direct
 
   <!-- do the actual plotting... -->
   <% flot_graph("graph", @flot) do %>
-  	<%= flot_plot(:dynamic => true, :overview => true) %>
+  	<%= flot_plot("graph, ":dynamic => true, :overview => true) %>
   	<%= flot_tooltip %>
   <% end %>
 
