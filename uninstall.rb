@@ -1,9 +1,10 @@
-require 'fileutils'
-
-directory = File.dirname(__FILE__)
-
-FileUtils.rm_r File.join(directory, "..", "..", "..", "public", "javascripts", "flotomatic.js")
-FileUtils.rm_r File.join(directory, "..", "..", "..", "public", "stylesheets", "flotomatic.css")
+# This should be a rake task maybe? I don't think these two are even there anymore are they?
+# require 'fileutils'
+# 
+# directory = File.dirname(__FILE__)
+# 
+# FileUtils.rm_r File.join(directory, "..", "..", "..", "public", "javascripts", "flotomatic.js")
+# FileUtils.rm_r File.join(directory, "..", "..", "..", "public", "stylesheets", "flotomatic.css")
 
 # Really?  Are you absolutely sure?
 # Better safe than sorry, imho
