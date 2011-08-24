@@ -39,14 +39,12 @@ flot_overview just creates the div to hold the smaller the zoom in / out graph.
 module FlotHelper
   FLOT_EXTRA_JS = %w(jquery.colorhelpers.min.js jquery.flot.crosshair.min.js jquery.flot.image.min.js jquery.flot.min.js jquery.flot.navigate.js jquery.flot.navigate.min.js jquery.flot.selection.min.js jquery.flot.stack.min.js jquery.flot.threshold.min.js)
 
-  # Includes the 'flotomatic' stylesheet, jquery, and flotomatic javascript files
-  #
+  # Includes the 'flotomatic' stylesheet, and flotomatic javascript files
+  # As far as I can tell, we don't need to put jquery in since it only works with jquery and should be included in your rails file anyways.  DRY, NODUPS etc.. 
   def flot_includes(options = {:jquery => true, :no_conflict => false, :include_all => false})
     return <<-EOJS
       #{stylesheet_link_tag 'flotomatic'}
   	  <!--[if IE]> #{javascript_include_tag('flotomatic/excanvas.min.js')} </script><![endif]-->
-      #{javascript_include_tag('flotomatic/jquery.min.js') if options[:jquery]}
-      #{javascript_tag "jQuery.noConflict();" if options[:no_conflict]}
       #{javascript_include_tag('flotomatic/jquery.flot.js')}
       #{javascript_include_tag('flotomatic/jquery.flot.selection.min.js') if options[:include].eql?(:selection)}
       #{flot_extra_javascripts if options[:include_all]}
