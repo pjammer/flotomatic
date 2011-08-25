@@ -49,6 +49,7 @@ module FlotHelper
       #{javascript_include_tag('flotomatic/jquery.flot.selection.min.js') if options[:include].eql?(:selection)}
       #{flot_extra_javascripts if options[:include_all]}
       #{javascript_include_tag('flotomatic/flotomatic')}
+      #{javascript_include_tag('flotomatic/sizzle.min.js')}
     EOJS
   end
 
@@ -98,7 +99,7 @@ module FlotHelper
   #   <% end %>
   #
   def flot_graph(placeholder, flot, &block)
-    graph = javascript_tag <<-EOJS
+    javascript_tag <<-EOJS
       jQuery(function() {
         var #{placeholder}_data        = #{flot.data.to_json};
         var #{placeholder}_options     = #{flot.options.to_json};
@@ -108,9 +109,6 @@ module FlotHelper
         #{capture(&block) if block_given?}
       });
     EOJS
-
-    return graph unless block_given?
-    safe_concat graph, block.binding
   end
 
   # Plot the actual graph (to be called within the flot_graph block)
@@ -190,16 +188,5 @@ module FlotHelper
 
   def flot_extra_javascripts
     javascript_include_tag(*FLOT_EXTRA_JS.map {|file| "flotomatic/#{file}"})
-  end
-
-  # ActionView::Helpers::TextHelper::concat has different arity in
-  # Rails 2.2.0 and later; pick the right implementation based on the
-  # current Rails version to avoid a warning.
-  def safe_concat(s, binding)
-    if Rails::VERSION::STRING >= "2.2.0"
-      concat(s)
-    else
-      concat(s, binding)
-    end
   end
 end
